@@ -1,0 +1,9 @@
+spring.application.name=springbootassesment1
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/abesDB
+spring.datasource.username=postgres
+spring.datasource.password=tiger
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=create
+
+server.port=8084

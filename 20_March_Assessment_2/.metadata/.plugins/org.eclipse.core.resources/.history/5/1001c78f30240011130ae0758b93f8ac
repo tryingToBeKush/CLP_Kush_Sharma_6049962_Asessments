@@ -1,0 +1,9 @@
+spring.application.name=springbootassesment1
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/employeeDB
+spring.datasource.username=postgres
+spring.datasource.password=kush
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+
+server.port=8085

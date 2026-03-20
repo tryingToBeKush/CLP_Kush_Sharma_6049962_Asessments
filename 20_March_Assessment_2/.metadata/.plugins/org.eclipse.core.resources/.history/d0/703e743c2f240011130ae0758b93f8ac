@@ -1,0 +1,37 @@
+package com.example.demo.webapi;
+
+import java.util.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import com.example.demo.entities.track;
+import com.example.demo.repo.trackrepo;
+
+@RestController
+@RequestMapping("/api/tracks")
+public class trackController {
+	@Autowired
+	private trackrepo repo;
+	
+	@PostMapping
+	public ResponseEntity<String> addTrack(@RequestBody track newTrack) {
+		repo.save(newTrack);
+		return ResponseEntity.ok("Track added successfully");
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<track>> getTracks() {
+		return ResponseEntity.ok(repo.findAll());
+	}
+	
+	@GetMapping("/album/{albumName}")
+	public ResponseEntity<List<track>> getTracksByAlbum(@PathVariable String albumName) {
+		return ResponseEntity.ok(repo.findByAlbumName(albumName));
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<track> getTrackById(@PathVariable long id) {
+		return ResponseEntity.ok(repo.findById(id).orElse(null));
+	}
+}
