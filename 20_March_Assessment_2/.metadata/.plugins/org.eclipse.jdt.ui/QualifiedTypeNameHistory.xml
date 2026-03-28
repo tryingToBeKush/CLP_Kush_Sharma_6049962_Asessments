@@ -15,4 +15,5 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
     <fullyQualifiedTypeName name="com.example.demo.entities.Track"/>
     <fullyQualifiedTypeName name="com.example.demo.repo.TrackRepo"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
 </qualifiedTypeNameHistroy>

@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entities.Track;
 
 public interface TrackRepo extends JpaRepository<Track, Long> {
-	List<Track> findByAlbumName(String albumName);
+	List<Track> findByTitle(String title);
 }

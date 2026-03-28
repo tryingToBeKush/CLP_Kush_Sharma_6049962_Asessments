@@ -1,6 +1,6 @@
 package com.example.demo.entities;
 
-import java.sql.Date;
+import java.util.Date;
 
 import jakarta.persistence.*;
 
@@ -10,19 +10,21 @@ public class Track {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Track_id")
-	private long id;
+	private Long id;
 	@Column(name = "Track_title")
 	private String title;
 	@Column(name = "Album_name")
 	private String albumName;
 	@Column(name = "Release_date")
 	private Date releaseDate;
+	
 
-	public long getId() {
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -18,7 +18,7 @@ public class TrackController {
     @PostMapping("/tracks")
     public ResponseEntity<String> addTrack(@RequestBody Track newTrack) {
         trackRepo.save(newTrack);
-        return ResponseEntity.ok("Track added successfully");
+        return ResponseEntity.status(201).body("Track added successfully");
     }
 
     @GetMapping("/tracks")
@@ -26,13 +26,23 @@ public class TrackController {
         return ResponseEntity.ok(trackRepo.findAll());
     }
 
-    @GetMapping("/tracks/album/{albumName}")
-    public ResponseEntity<List<Track>> getTracksByAlbum(@PathVariable String albumName) {
-        return ResponseEntity.ok(trackRepo.findByAlbumName(albumName));
+    @GetMapping("/tracks/title/{title}")
+    public ResponseEntity<?> getTracksByTitle(@PathVariable String title) {
+        List<Track> tracks = trackRepo.findByTitle(title);
+        if(!tracks.isEmpty()) {
+            return ResponseEntity.ok(tracks);
+        } else {
+            return ResponseEntity.status(404).body("Track not found");
+        }
     }
 
-    @GetMapping("/tracks/{id}")
-    public ResponseEntity<Track> getTrackById(@PathVariable long id) {
-        return ResponseEntity.ok(trackRepo.findById(id).orElse(null));
+    @GetMapping("/tracks/id/{id}")
+    public ResponseEntity<?> getTrackById(@PathVariable Long id) {
+        Optional<Track> track = trackRepo.findById(id);
+        if(track.isPresent()) {
+            return ResponseEntity.ok(track.get());
+        } else {
+            return ResponseEntity.status(404).body("Track not found");
+        }
     }
 }
